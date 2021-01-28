@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react'
+import Input from './Work/Input';
+import Result from './Work/Result';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component{
+  constructor(){
+    super();
+    this.state={
+      arr:[],
+      arr2:[]
+    }
+  }
+
+  onChangeName = (value1, value2) => {
+    this.setState({
+      arr: [...this.state.arr,
+        {firstvalue:value1, secondvalue:value2}
+      ]
+    })
+  }
+ 
+  deleteElement = (index) => {
+    this.setState({
+      arr2:this.state.arr.splice(index, 1)
+    })
+  }
+
+  editElement = (index,e,k) => {
+    this.setState({
+      arr2:this.state.arr.splice(index, 1,{firstvalue:e,secondvalue:k})
+    })
+  }
+    
+  render(){
+    console.log(this.state.arr)
+    return(
+      <div>
+        <Input changeLink = {this.onChangeName}/>
+        <Result arr = {this.state.arr} deleteLink = {this.deleteElement} editLink = {this.editElement}/>
+      </div>
+    )
+  }
 }
-
-export default App;
