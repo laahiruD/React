@@ -27,7 +27,7 @@ export default class App extends Component{
   }
 
   editElement = (index,e,k) => {
-    // NEW EDI
+    // NEW EDI 2nd
     this.setState({
       arr2:this.state.arr.splice(index, 1,{firstvalue:e,secondvalue:k})
     })
