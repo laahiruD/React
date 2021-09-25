@@ -21,7 +21,7 @@ export default class App extends Component{
   }
  
   deleteElement = (index) => {
-    //new edit
+    //new edit feature
     this.setState({
       arr2:this.state.arr.splice(index, 1)
     })
